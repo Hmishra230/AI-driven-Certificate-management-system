@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Generate Certificate{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3 class="text-center">Create Certificate</h3>
+        <form method="POST" action="{{ url_for('generate_certificate') }}">
+            <div class="form-group">
+                <label for="name">Recipient Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="certificate_type">Certificate Type</label>
+                <select name="certificate_type" class="form-control" required>
+                    <option value="Police Verification">Police Verification</option>
+                    <option value="Medical Certificate">Medical Certificate</option>
+                    <option value="NOC">NOC</option>
+                    <option value="No Dues">No Dues</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Generate Certificate</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Certificates{% endblock %}
+
+{% block content %}
+<h2>Your Certificates</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Certificate Number</th>
+            <th>Type</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cert in certificates %}
+        <tr>
+            <td>{{ cert.certificate_number }}</td>
+            <td>{{ cert.certificate_type }}</td>
+            <td>{{ cert.application_date.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

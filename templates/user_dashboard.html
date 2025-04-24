@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="user-dashboard">
+    <h3>Your Profile</h3>
+    <div class="profile-section">
+        <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Profile" class="profile-img">
+        <div class="profile-info">
+            <p>Name: {{ user.name }}</p>
+            <p>Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <h3>User Dashboard</h3>
+    <a href="{{ url_for('generate_certificate') }}" class="btn btn-primary mb-3">Generate Certificate</a>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Certificate Type</th>
+                <th>Date</th>
+                <th>Certificate Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for certificate in certificates %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ certificate.certificate_type }}</td>
+                <td>{{ certificate.application_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ certificate.certificate_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Manage Certificates</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Certificate Type</th>
+                <th>Certificate Number</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for certificate in certificates %}
+            <tr>
+                <td>{{ certificate.certificate_type }}</td>
+                <td>{{ certificate.certificate_number }}</td>
+                <td>{{ certificate.application_date.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    <a href="{{ url_for('download_certificate', certificate_id=certificate.id) }}" class="btn btn-primary">Download</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/user.js') }}"></script>
+{% endblock %}

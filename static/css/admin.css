@@ -1,0 +1,16 @@
+.admin-dashboard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.admin-table {
+    margin-top: 20px;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Generate Certificate{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h3>Certificate Generated Successfully!</h3>
+    <p>Your certificate has been generated and is ready for preview.</p>
+    <a href="{{ url_for('certificate_preview', certificate_number=certificate_number) }}" class="btn btn-success">
+        View Certificate
+    </a>
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+{% endblock %}

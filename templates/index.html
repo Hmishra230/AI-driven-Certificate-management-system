@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>Welcome to CertManage</h1>
+    <p>Effortlessly generate and manage your certificates.</p>
+    {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started</a>
+    {% endif %}
+</div>
+{% endblock %}

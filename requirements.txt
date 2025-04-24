@@ -1,0 +1,21 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.3
+Werkzeug==2.3.6
+transformers==4.33.2
+torch==2.0.1
+Jinja2==3.1.2
+
+<body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/user/dashboard">User Dashboard</a>
+        <a href="/admin/dashboard">Admin Dashboard</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
